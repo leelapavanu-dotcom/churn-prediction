@@ -15,7 +15,14 @@ spec:
     spec:
       containers:
         - name: churn-api
-          image: churn-prediction-api:lab11
+          image: churn-prediction-api:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"

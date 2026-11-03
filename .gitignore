@@ -1,83 +1,48 @@
-# ==============================
-# Python Environments
-# ==============================
-venv/
-env/
+# Virtual environment
 .venv/
-ENV/
 
-# ==============================
-# Python Cache Files
-# ==============================
+# MLflow
+mlruns/
+mlartifacts/
+
+# Model binaries
+*.pkl
+*.joblib
+*.skops
+
+# Dataset files
+data/raw/*.csv
+data/processed/*.csv
+data/monitoring/drift/*.csv
+
+# Generated output
+outputs/*.csv
+reports/inference_results.csv
+
+# macOS
+.DS_Store
+# Local editor settings
+.vscode/
+
+# Python cache
 __pycache__/
-*.py[cod]
-*$py.class
-
-# ==============================
-# Jupyter Notebook
-# ==============================
+*.pyc
 .ipynb_checkpoints/
 
-# ==============================
-# Data Files
-# ==============================
-data/processed/*.npy
+# MLflow databases and backups
+mlflow.db
+mlflow_backup*.db
+mlflow_old.db
 
-# ==============================
-# Model Artifacts
-# ==============================
-models/*.pkl
-models/*.joblib
-models/*.h5
-models/*.keras
-models/*.pt
-models/*.pth
-
-# ==============================
-# MLflow Tracking Data
-# ==============================
-mlruns/
-*.db
-*.db-shm
-*.db-wal
-
-# ==============================
-# Logs
-# ==============================
-logs/
-*.log
-
-# ==============================
-# Generated Outputs
-# ==============================
-outputs/
+# Generated local artifacts
 artifacts/
+logs/
+outputs/drift/
+outputs/monitoring/
+outputs/retraining/
 
-# ==============================
-# IDE Settings
-# ==============================
-.vscode/
-.idea/
-
-# ==============================
-# Operating System Files
-# ==============================
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# ==============================
-# Secrets and Environment Variables
-# ==============================
-.env
-.env.*
-!.env.example
-
-# ==============================
-# Temporary Files
-# ==============================
-*.tmp
-*.bak
-*.swp
 # Deployment backups
 deployment_backup*/
+# Backup files
+*.bak
+*.backup
