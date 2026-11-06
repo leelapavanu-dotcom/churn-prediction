@@ -1,10 +1,10 @@
+
 name: Lab 13 - End-to-End MLOps
 
 on:
   workflow_dispatch:
   schedule:
     - cron: "17 * * * *"
-      timezone: "Asia/Kolkata"
 
 jobs:
   mlops-monitoring:
@@ -20,6 +20,11 @@ jobs:
           python3 -m venv .venv
           .venv/bin/python -m pip install --upgrade pip
           .venv/bin/pip install -r requirements.txt
+
+      - name: Run Data Drift Analysis
+        shell: bash
+        run: |
+          .venv/bin/python src/mlops_pipeline/12_data_drift.py
 
       - name: Run MLOps monitoring trigger
         shell: bash
