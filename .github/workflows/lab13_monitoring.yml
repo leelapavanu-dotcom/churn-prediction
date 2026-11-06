@@ -1,35 +1,44 @@
+
 name: Lab 13 - End-to-End MLOps
-# Integration test: process a genuinely new incoming batch
 
 on:
   workflow_dispatch:
+
   schedule:
     - cron: "17 * * * *"
       timezone: "Asia/Kolkata"
 
 jobs:
   mlops-monitoring:
-    runs-on: [self-hosted, macos-latest, X64]
+    runs-on: [self-hosted, macOS, ARM64]
 
     steps:
-      - name: Run MLOps monitoring trigger
-        shell: powershell
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python environment
+        shell: bash
         run: |
-          Set-Location "C:\Users\Favorites\Downloads\Churnprediction"
-          & ".\venv\Scripts\python.exe" ".\src\mlops_pipeline\12_monitor_trigger.py"
+          python3 -m venv .venv
+          .venv/bin/python -m pip install --upgrade pip
+          .venv/bin/pip install -r requirements.txt
+
+      - name: Run MLOps monitoring trigger
+        shell: bash
+        run: |
+          .venv/bin/python src/mlops_pipeline/12_monitor_trigger.py
 
       - name: Show monitoring result
-        shell: powershell
+        shell: bash
         run: |
-          Set-Location "C:\Users\Favorites\Downloads\Churnprediction"
-          if (Test-Path ".\outputs\monitoring\monitor_trigger_report.json") {
-              Get-Content ".\outputs\monitoring\monitor_trigger_report.json"
-          } else {
-              Write-Host "Monitoring report was not generated."
-          }
+          if [ -f outputs/monitoring/monitor_trigger_report.json ]; then
+            cat outputs/monitoring/monitor_trigger_report.json
+          else
+            echo "Monitoring report was not generated."
+          fi
 
       - name: Verify Kubernetes
-        shell: powershell
+        shell: bash
         run: |
           kubectl get deployment churn-api
           kubectl get pods
