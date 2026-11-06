@@ -9,7 +9,7 @@ on:
 
 jobs:
   mlops-monitoring:
-    runs-on: [self-hosted, Windows, X64]
+    runs-on: [self-hosted, macos-latest, X64]
 
     steps:
       - name: Run MLOps monitoring trigger
@@ -21,7 +21,7 @@ jobs:
       - name: Show monitoring result
         shell: powershell
         run: |
-          Set-Location "C:\Users\jnane\Favorites\churn-prediction"
+          Set-Location "C:\Users\Favorites\Downloads\Churnprediction"
           if (Test-Path ".\outputs\monitoring\monitor_trigger_report.json") {
               Get-Content ".\outputs\monitoring\monitor_trigger_report.json"
           } else {
