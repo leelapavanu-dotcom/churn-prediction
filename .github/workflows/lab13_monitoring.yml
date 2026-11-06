@@ -1,9 +1,7 @@
-
 name: Lab 13 - End-to-End MLOps
 
 on:
   workflow_dispatch:
-
   schedule:
     - cron: "17 * * * *"
       timezone: "Asia/Kolkata"
