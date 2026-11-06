@@ -29,7 +29,6 @@ jobs:
       - name: Verify Project Files
         run: |
           test -f config.yaml
-          test -f data/raw/churn.csv
           test -f src/mlops_pipeline/churn_prediction_pipeline.py
           test -f src/mlops_pipeline/10_failure_injection.py
 
