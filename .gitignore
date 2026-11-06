@@ -12,6 +12,7 @@ mlartifacts/
 
 # Dataset files
 data/raw/*.csv
+!data/raw/churn.csv
 data/processed/*.csv
 data/monitoring/drift/*.csv
 
@@ -21,6 +22,7 @@ reports/inference_results.csv
 
 # macOS
 .DS_Store
+
 # Local editor settings
 .vscode/
 
@@ -43,6 +45,7 @@ outputs/retraining/
 
 # Deployment backups
 deployment_backup*/
+
 # Backup files
 *.bak
 *.backup
